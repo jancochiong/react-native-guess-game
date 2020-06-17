@@ -1,19 +1,30 @@
-import React, {useState} from 'react';
-import { StyleSheet, View } from 'react-native';
-import Header from './components/Header'
-import StartGameScreen from './screens/StartGameScreen'
-import GameScreen from './screens/GameScreen'
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import Header from "./components/Header";
+import StartGameScreen from "./screens/StartGameScreen";
+import GameScreen from "./screens/GameScreen";
+import GameOverScreen from "./screens/GameoverScreen";
 
 export default function App() {
-  const [userNumber, setUserNumber] = useState()
+  const [userNumber, setUserNumber] = useState();
+  const [guessRounds, setGuessRounds] = useState(0);
 
   const startGameHandler = (selectedNumber) => {
-    setUserNumber(selectedNumber)
-  }
+    setUserNumber(selectedNumber);
+    setGuessRounds(0);
+  };
 
-  let content = <StartGameScreen  onStartGame={startGameHandler}/>
-  if(userNumber){
-    content = <GameScreen userChoice={userNumber}/>
+  const gameOverHanlder = (numOfRounds) => {
+    setGuessRounds(numOfRounds);
+  };
+
+  let content = <StartGameScreen onStartGame={startGameHandler} />;
+  if (userNumber && guessRounds <= 0) {
+    content = (
+      <GameScreen userChoice={userNumber} onGameOver={gameOverHanlder} />
+    );
+  }else if (guessRounds > 0){
+    content = <GameOverScreen />
   }
 
   return (
@@ -26,6 +37,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
