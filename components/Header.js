@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Colors from "../constant/colors";
+import Colors from "../constants/colors";
 const Header = (props) => {
   return (
     <View style={styles.header}>
