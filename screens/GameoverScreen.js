@@ -9,7 +9,8 @@ const GameOverScreen = (props) => {
       <TitleText>The Game is Over!</TitleText>
       <View style={styles.imageContainer}>
         <Image 
-          source={require("../assets/success.png")} 
+          // source={require("../assets/success.png")} 
+          source={{uri: 'https://cdn.sidlee.com/-/media/sidlee/work/the-north-face/summit-series/thumbnail_tnf_summit.jpg?mw=1420&hash=2AD352B1B82A3F71A53DAC2E8F2836473D9481D4'}} 
           style={styles.image}
           resizeMode="cover"
         />
